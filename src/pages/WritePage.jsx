@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 
 import Button from "../components/Button";
@@ -7,15 +8,32 @@ import styled from "styled-components";
 import { nanoid } from "nanoid";
 
 export default function WritePage() {
+    const navigate = useNavigate();
     const post = useSelector(state => state.posts.post);
+    const checklist = useSelector(state => state.checklist.checklist);
 
     const onSubmitHandler = (ev) => {
         ev.preventDefault();
+        
+        const newPostId = nanoid(10);
 
-        const newPost = {...post, postId: nanoid(10)};
+        const newPost = {...post, postId: newPostId};
         Axios.post("http://localhost:3001/posts/", newPost)
         .then(res => console.log(res))
         .catch(err => console.log(err));
+
+        let initCheck;
+        for (const chk in checklist){
+            initCheck = {...initCheck, [chk.slice(0, 4)] : 0}
+        }
+
+        const newChecklist = {...checklist, ...initCheck, postId: newPostId};
+
+        Axios.post("http://localhost:3001/comments/", newChecklist)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+
+        navigate('/community')
     };
 
     return (
@@ -50,8 +68,8 @@ export default function WritePage() {
             />
 
             <TextInputBox 
-            name={'commentText'} 
-            placeholder={'코멘트'}
+            name={'chk3'} 
+            placeholder={'세 번째 체크 박스'}
             max={100}
             />
 

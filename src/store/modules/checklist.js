@@ -2,12 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     checklist: {
-        chk1Text: "",
-        chk1: 0,
-        chk2Text: "",
-        chk2: 0,
-        chk3Text: "",
-        chk3: 0,
+        chk1Text: ""
     }
 }
 
@@ -17,10 +12,10 @@ export const checklistSlice = createSlice({
     reducers: {
         editChecklist: (state, action) => {
             const {name:chkNum, currentValue} = action.payload;
-            const newState={...state.post, [chkNum+"Text"]: currentValue};
+            const newState={...state.checklist, [chkNum+"Text"]: currentValue};
             console.log(newState);
 
-            console.log('체크리스트 수정');
+            state.checklist = newState;
         }
     }
 })
