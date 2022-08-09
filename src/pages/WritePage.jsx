@@ -1,11 +1,27 @@
+import { useSelector } from "react-redux"
+import Axios from "axios";
+
 import Button from "../components/Button";
 import TextInputBox from "../components/TextInputBox";
 import styled from "styled-components";
+import { nanoid } from "nanoid";
 
-export default function WritePage (){
-    
+export default function WritePage() {
+    const post = useSelector(state => state.posts.post);
+
+    const onSubmitHandler = (ev) => {
+        ev.preventDefault();
+
+        const newPost = {...post, postId: nanoid(10)};
+        Axios.post("http://localhost:3001/posts/", newPost)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    };
+
     return (
-        <MyForm>
+        <MyForm 
+        onSubmit={(ev) => onSubmitHandler(ev)}>
+
             <TextInputBox 
             name={'username'} 
             placeholder={'작성자'}
@@ -34,8 +50,8 @@ export default function WritePage (){
             />
 
             <TextInputBox 
-            name={'chk3'} 
-            placeholder={'세 번째 체크 박스'}
+            name={'commentText'} 
+            placeholder={'코멘트'}
             max={100}
             />
 

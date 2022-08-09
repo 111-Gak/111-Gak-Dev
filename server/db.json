@@ -1,9 +1,7 @@
 {
-  "": {
-    "id": 0
-  },
   "posts": [
     {
+      "id": 0,
       "postId": "oe05j32-3m",
       "username": "이름1",
       "createdAt": "2022-01-01",
@@ -11,15 +9,9 @@
       "done": 1
     },
     {
+      "id": 1,
       "postId": "6f-s9ewv0n",
       "username": "이름2",
-      "createdAt": "2022-02-02",
-      "title": "TIL제목2",
-      "done": 0
-    },
-    {
-      "postId": "93fmelspc2",
-      "username": "이름3",
       "createdAt": "2022-02-02",
       "title": "TIL제목2",
       "done": 0
@@ -27,6 +19,7 @@
   ],
   "checkList": [
     {
+      "id": 0,
       "postId": "6f-s9ewv0n",
       "chk1": 1,
       "chk1Text": "할 일1",
@@ -36,6 +29,7 @@
       "chk3Text": "할 일3"
     },
     {
+      "id": 1,
       "postId": "93fmelspc2",
       "chk1": 1,
       "chk1Text": "할 일1",
@@ -43,6 +37,7 @@
       "chk2Text": "할 일2"
     },
     {
+      "id": 2,
       "postId": "oe05j32-3m",
       "chk1": 1,
       "chk1Text": "할 일1",
@@ -52,6 +47,7 @@
   ],
   "comments": [
     {
+      "id": 0,
       "postId": "oe05j32-3m",
       "list": [
         {
@@ -63,6 +59,7 @@
       ]
     },
     {
+      "id": 1,
       "postId": "6f-s9ewv0n",
       "list": [
         {
