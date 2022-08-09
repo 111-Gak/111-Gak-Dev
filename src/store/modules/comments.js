@@ -1,31 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const today = new Date();
+const mouth = today.getMonth()+1;
+const date = today.getDate();
+const zeroMonth = (mouth<10)?'0'+parseInt(mouth):mouth;
+const zeroDate = (date<10)?'0'+parseInt(date):date;
+
+const initialDate = `${today.getFullYear()}-${zeroMonth}-${zeroDate}`
 const initialState = {
-    comment: [{
-        postId: 0,
-        comments: [{
-                commentId: 0,
-                commentUsername: "김영희",
-                commentText: "화이팅하세요!",
-                commentCreatedAt: "0000-00-00"
-            },
-            {
-                commentId: 1,
-                commentUsername: "유재석",
-                commentText: "반갑습니다.",
-                commentCreatedAt: "0000-00-00"
-            }
-        ]
-    }]
+    comment: {
+        commentUsername: "",
+        commentText: "",
+        commentCreatedAt: initialDate
+    }
 }
 
 export const commentsSlice = createSlice({
     name: "comments",
     initialState,
     reducers: {
-        
+        editComment: (state, action) => {
+            const {name:keyword, currentValue} = action.payload;
+
+            console.log('코멘트수정');
+        }
     }
 })
 
-export const {} = commentsSlice.actions;
+export const { editComment } = commentsSlice.actions;
 export default commentsSlice.reducer;
