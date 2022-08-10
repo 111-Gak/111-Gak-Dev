@@ -23,14 +23,6 @@
       "createdAt": "2022-02-02",
       "title": "TIL제목2",
       "done": 0
-    },
-    {
-      "postId": "Cdr8dJyJos",
-      "username": "dfsd",
-      "createdAt": "2022-08-10",
-      "title": "fdsf",
-      "done": 0,
-      "id": 3
     }
   ],
   "checkList": [
@@ -91,13 +83,6 @@
           "commentCreatedAt": "0000-00-00"
         }
       ]
-    },
-    {
-      "chkText": "체크크박스",
-      "idx": 0,
-      "chkT": 0,
-      "postId": "-5XXqBX-cm",
-      "id": 2
     }
   ]
 }
