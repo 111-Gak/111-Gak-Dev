@@ -14,7 +14,7 @@ const Main = () => {
                 TIL
             </ButtonStyle>
             <ButtonStyle onClick={() => {
-                nagivate("/community")
+                nagivate("/posts")
             }}>
                 
                 커뮤니티
