@@ -7,7 +7,7 @@ import CommunityPage from "./CommunityPage";
 import Header from "../components/Header";
 import EditPage from "./EditPage";
 import DetailPage from "./DetailPage";
-
+import Main from "./Main";
 
 export default function Router(){
     return (
@@ -16,6 +16,7 @@ export default function Router(){
 
             <Contents>
                 <Routes>
+                    <Route path="" element={<Main />} />
                     <Route path="/*" element={<NotFound />} />
                     <Route path="/write" element={<WritePage />} />
                     <Route path="/posts" element={<CommunityPage />} />
@@ -38,5 +39,4 @@ min-height: calc(100vh - 60px - 60px);
 margin: 0 auto;
 padding: 30px 10px 0;
 box-sizing: border-box;
-
 `
