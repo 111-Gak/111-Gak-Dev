@@ -33,7 +33,7 @@ export default function WritePage() {
         .then(res => console.log(res))
         .catch(err => console.log(err));
 
-        navigate('/community')
+        navigate('/posts')
     };
 
     return (
@@ -77,6 +77,7 @@ export default function WritePage() {
                 <Button 
                 buttonText={'클릭하세요'} 
                 action={null}
+                
                 />
             </div>
 

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux"
 import { editPost } from "../store/modules/posts"
-import { editComment } from "../store/modules/comments"
 import { editChecklist } from "../store/modules/checklist"
 
 export default function TextInputBox(props){
@@ -26,9 +25,7 @@ export default function TextInputBox(props){
             onChange={(e)=> {
                 const currentValue = e.target.value;
 
-                if(name.indexOf('comment') > -1) {
-                    dispatch(editComment({name, currentValue}))
-                } else if(name.indexOf('chk') > -1) {
+                if(name.indexOf('chk') > -1) {
                     dispatch(editChecklist({name, currentValue}))
                 } else {
                     dispatch(editPost({name, currentValue}))

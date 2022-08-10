@@ -8,6 +8,9 @@ import Header from "../components/Header";
 import EditPage from "./EditPage";
 import DetailPage from "./DetailPage";
 import Main from "./Main";
+import AddCommentForm from "./AddCommentForm";
+import Comment from "./Comment";
+import Comments from "./Comments";
 
 export default function Router(){
     return (
@@ -16,7 +19,10 @@ export default function Router(){
 
             <Contents>
                 <Routes>
-                    <Route path="" element={<Main />} />
+                    <Route path="/add" element={<AddCommentForm />} />
+                    <Route path="/ct" element={<Comment />} />
+                    <Route path="/cts" element={<Comments />} />
+                    <Route path="/" element={<Main />} />
                     <Route path="/*" element={<NotFound />} />
                     <Route path="/write" element={<WritePage />} />
                     <Route path="/posts" element={<CommunityPage />} />

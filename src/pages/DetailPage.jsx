@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios";
 
 import Post from "../components/Post";
+import Comments from "./Comments";
 import styled from "styled-components";
 
 export default function DetailPage (){
@@ -21,9 +22,13 @@ export default function DetailPage (){
     }, []);
 
     return (
+        <>
         <Detail>
             <Post list={{...post}} key={post.postId} />
+            
         </Detail>
+        <Comments />
+        </>
     );
 };
 

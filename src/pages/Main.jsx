@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 
+
 const Main = () => {
     const nagivate = useNavigate();
     return (
@@ -14,7 +15,7 @@ const Main = () => {
                 TIL
             </ButtonStyle>
             <ButtonStyle onClick={() => {
-                nagivate("/community")
+                nagivate("/posts")
             }}>
                 
                 커뮤니티

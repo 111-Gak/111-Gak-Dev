@@ -4,13 +4,74 @@
       "id": 1,
       "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "postId": "Yiq3EICdME",
+      "username": "df",
+      "createdAt": "2022-08-10",
+      "title": "df",
+      "done": 0,
+      "id": 2
+    },
+    {
+      "postId": "qcp4Tzk2g7",
+      "username": "sdf",
+      "createdAt": "2022-08-10",
+      "title": "sdfsd",
+      "done": 0,
+      "id": 3
+    },
+    {
+      "postId": "MezXHzBjRW",
+      "username": "df",
+      "createdAt": "2022-08-10",
+      "title": "df",
+      "done": 0,
+      "id": 4
+    },
+    {
+      "postId": "_vOtiPnLQa",
+      "username": "dfaaa",
+      "createdAt": "2022-08-10",
+      "title": "dfaa",
+      "done": 0,
+      "id": 5
     }
   ],
-  "comments": [
+  "comment": [
     {
       "id": 1,
       "body": "some comment",
+      "createdAt": "2022-08-10",
       "postId": 1
+    },
+    {
+      "chkText": "df",
+      "idx": 0,
+      "chkT": 0,
+      "postId": "Yiq3EICdME",
+      "id": 2
+    },
+    {
+      "chkText": "sdf",
+      "idx": 0,
+      "chkT": 0,
+      "postId": "qcp4Tzk2g7",
+      "id": 3
+    },
+    {
+      "chkText": "df",
+      "idx": 0,
+      "chkT": 0,
+      "postId": "MezXHzBjRW",
+      "id": 4
+    },
+    {
+      "chkText": "fefe",
+      "idx": 0,
+      "chkT": 0,
+      "postId": "_vOtiPnLQa",
+      "id": 5
     }
   ],
   "profile": {
