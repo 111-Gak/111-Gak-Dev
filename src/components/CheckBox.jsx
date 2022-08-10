@@ -24,20 +24,21 @@ export default function CheckBox(props){
     }
 
     const handleCheckboxChange =(ev, postId)=> {
-        // setPatched(!patched)
-        // const name = ev.target.name;
-        // const toggleDone = ev.target.checked? 1 : 0 ;
+        const name = ev.target.name;
+        const toggleDone = ev.target.checked? 1 : 0 ;
 
-        // const newValue = {[ev.target.name]: toggleDone} 
-        // const patchValue = {...chks, ...newValue}
+        
+        const newValue = {[ev.target.name]: toggleDone} 
+        const patchValue = {...chks, ...newValue}
 
-        // dispatch(patchChecklistThunk(patchValue));
+        console.log(patchValue);
+
+        axios.patch('http://localhost:3001/checklist', patchValue)
     }
 
     return (
     <>  
         {loaded && chks!=undefined && <>
-            {console.log(chks)}
 
             <div>
                 <input 
