@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export default function ProgressBar(props){
-    const { checkList } = props;
+    const chks = props.chks;
     let count = 0;
-    checkList.forEach(x=>{
-        if(x.checked) count+=1    
-    })
+
+    for (const x in chks){
+        if(chks[x]===1) count+=1  
+    }
+
     return (
         <MyProgressBar count={count} />
     )
