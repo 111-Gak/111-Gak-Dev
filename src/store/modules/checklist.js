@@ -11,8 +11,9 @@ export const checklistSlice = createSlice({
     initialState,
     reducers: {
         editChecklist: (state, action) => {
-            const {name:chkNum, currentValue} = action.payload;
-            const newState={...state.checklist, [chkNum+"Text"]: currentValue};
+            const {idx: idx, currentValue} = action.payload;
+            const newState={...state.checklist, "chkText": currentValue, idx: idx};
+            
             console.log(newState);
 
             state.checklist = newState;
