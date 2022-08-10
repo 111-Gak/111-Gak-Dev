@@ -5,7 +5,6 @@ export default function Button(props){
     return (
         <CommonButton 
         onClick={action}
-        type="button"
         >
             {buttonText}
         </CommonButton>
