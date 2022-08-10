@@ -8,23 +8,28 @@ import { useDispatch } from "react-redux";
 import { patchChecklistThunk } from "../store/modules/checklist";
 
 export default function Post(props) {
-    const navigate = useNavigate();
-
-    const {postId, username, createdAt, title, done}=props.list;
-    const [chks, setChks] = useState([]);
-    const [patched, setPatched] = useState(true);
     const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const {postId, username, createdAt, title, done}=props.list;
 
-    const fetchChks = async () => {
-        const { data }  = await axios.get("http://localhost:3001/checklist?postId="+postId)
-        
-        setChks( data[0] );
-    }
-
+    const [chks, setChks] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+    
     useEffect(()=>{
         fetchChks()
+    }, [loaded])
 
-    }, [patched])
+    const fetchChks = async () => {
+        let data;
+        try {
+            data = await axios.get("http://localhost:3001/checklist")
+        } catch (err) {
+            console.log(err)
+        } finally {
+            setChks(data.data)
+            setLoaded(true)
+        }
+    }
 
     const handleCheckboxChange =(ev, postId)=> {
         // setPatched(!patched)
@@ -34,7 +39,6 @@ export default function Post(props) {
         const newValue = {[ev.target.name]: toggleDone} 
         const patchValue = {...chks, ...newValue}
 
-        console.log(patchValue);
 
         dispatch(patchChecklistThunk(patchValue));
         
@@ -59,83 +63,86 @@ export default function Post(props) {
     // )
     
 
-    return(
-        <MyPost  
-        onClick={()=> {
-            navigate('/post/'+postId)}
-        }>
-            <div className="post-header">
-                <div>
-                    <span className="post-name">
-                        {done? "💚":"🖤"}
-                        {username}
-                    </span>
-                    <span className="post-title">
-                        {title}
+    return (
+        <>
+            { loaded && <MyPost  
+            onClick={()=> {
+                navigate('/post/'+postId)}
+            }>
+                <div className="post-header">
+                    <div>
+                        <span className="post-name">
+                            {done? "💚":"🖤"}
+                            {username}
+                        </span>
+                        <span className="post-title">
+                            {title}
+                        </span>
+                    </div>
+                    <span className="post-date">
+                        {createdAt}
                     </span>
                 </div>
-                <span className="post-date">
-                    {createdAt}
-                </span>
-            </div>
-            <div className="post-body">
-                <ProgressBar chks={chks} />
+                <div className="post-body">
+                    <ProgressBar chks={chks} />
 
-                <div>
-                    <div key={'chk1'}>
-                        <input 
-                            type="checkbox" 
-                            name={'chk1'}
-                            id={'chk1'}
-                            checked={chks.chk1 ? 'checked' : false}
-                            onChange={(ev)=> {
-                                ev.preventDefault();
-                                handleCheckboxChange(ev, postId);
-                            }}
-                        />
-                        <label htmlFor={'chk1'} >
-                            {chks.chk1Text}
-                        </label>
+                    <div>
+                        <div key={'chk1'}>
+                            <input 
+                                type="checkbox" 
+                                name={'chk1'}
+                                id={'chk1'}
+                                checked={chks[0].chk1 ? 'checked' : false}
+                                onChange={(ev)=> {
+                                    ev.preventDefault();
+                                    handleCheckboxChange(ev, postId);
+                                }}
+                            />
+                            <label htmlFor={'chk1'} >
+                                {chks[0].chk1Text}
+                            </label>
+                        </div>
+
+                        {chks[0].chk2Text && 
+                        <div key={'chk2'}>
+                            <input 
+                                type="checkbox" 
+                                name={'chk2'}
+                                id={'chk2'}
+                                checked={chks[1].chk2 ? 'checked' : false}
+                                onChange={(ev)=> {
+                                    ev.preventDefault();
+                                    handleCheckboxChange(ev, postId);
+                                }}
+                            />
+                            <label htmlFor={'chk2'} >
+                                {chks[1].chk2Text}
+                            </label>
+                        </div>}
+                        
+                        {chks[0].chk3Text && 
+                        <div key={'chk3'}>
+                            <input 
+                                type="checkbox" 
+                                name={'chk3'}
+                                id={'chk3'}
+                                checked={chks[2].chk3 ? 'checked' : false}
+                                onChange={(ev)=> {
+                                    ev.preventDefault();
+                                    handleCheckboxChange(ev, postId);
+                                }}
+                            />
+                            <label htmlFor={'chk3'} >
+                                {chks[1].chk3Text}
+                            </label>
+                        </div>}
+
                     </div>
 
-                    {chks.chk2Text && 
-                    <div key={'chk2'}>
-                        <input 
-                            type="checkbox" 
-                            name={'chk2'}
-                            id={'chk2'}
-                            checked={chks.chk2 ? 'checked' : false}
-                            onChange={(ev)=> {
-                                ev.preventDefault();
-                                handleCheckboxChange(ev, postId);
-                            }}
-                        />
-                        <label htmlFor={'chk2'} >
-                            {chks.chk2Text}
-                        </label>
-                    </div>}
-                    
-                    {chks.chk3Text && 
-                    <div key={'chk3'}>
-                        <input 
-                            type="checkbox" 
-                            name={'chk3'}
-                            id={'chk3'}
-                            checked={chks.chk3 ? 'checked' : false}
-                            onChange={(ev)=> {
-                                ev.preventDefault();
-                                handleCheckboxChange(ev, postId);
-                            }}
-                        />
-                        <label htmlFor={'chk3'} >
-                            {chks.chk3Text}
-                        </label>
-                    </div>}
-
                 </div>
-
-            </div>
-        </MyPost>
+            </MyPost>
+            }
+        </>
     )
 }
 
