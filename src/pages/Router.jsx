@@ -7,7 +7,7 @@ import CommunityPage from "./CommunityPage";
 import Header from "../components/Header";
 import EditPage from "./EditPage";
 import DetailPage from "./DetailPage";
-
+import Main from "./Main";
 
 export default function Router(){
     return (
@@ -16,6 +16,7 @@ export default function Router(){
 
             <Contents>
                 <Routes>
+                    <Route path="" element={<Main />} />
                     <Route path="/write" element={<WritePage />} />
                     <Route path="/community" element={<CommunityPage />} />
                     <Route path="/*" element={<NotFound />} />
