@@ -19,7 +19,10 @@ export default function CommunityPage() {
     return (
         <>
             {posts.map(post => {
-                return <Post list={{...post}} key={post.postId} />
+                return <Post 
+                list={{...post}} 
+                key={post.postId}
+                />
             })}
         </>
     )
