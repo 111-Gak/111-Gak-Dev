@@ -9,7 +9,7 @@ import CheckBox from "./CheckBox";
 export default function Post(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const {postId, username, createdAt, title, done}=props.list;
+    const {id, postId, username, createdAt, title, done}=props.list;
 
     return (
     <>
@@ -35,7 +35,7 @@ export default function Post(props) {
                 {/* <ProgressBar postId={postId} /> */}
 
                 <div>
-                    <CheckBox postId={postId}/>
+                    <CheckBox postId={postId} id={id}/>
                 </div>
 
             </div>

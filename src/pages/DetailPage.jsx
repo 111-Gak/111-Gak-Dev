@@ -29,6 +29,7 @@ export default function DetailPage (){
 
 const Detail = styled.div`
     & > div {
+        /* background: red; */
         padding-top: 40px;
         flex-flow: column;
         position: relative;
@@ -42,9 +43,9 @@ const Detail = styled.div`
         margin: 10px 0 20px;
         font-size: 30px;
     }
-    .post-body > *:first-child {
+    /* .post-body > *:first-child {
         position: absolute;
         top: 1em;
         width: calc(100% - 2em);
-    }
+    } */
 `

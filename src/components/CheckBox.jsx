@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function CheckBox(props){
-    const {postId}=props;
+    const {postId, id}=props;
+
+    console.log(id);
 
     const [chks, setChks] = useState();
     const [loaded, setLoaded] = useState(false);
@@ -14,26 +16,32 @@ export default function CheckBox(props){
     const fetchChks = async () => {
         let data;
         try {
-            data = await axios.get("http://localhost:3001/checklist?postId="+postId)
+            data = await axios.get(`http://localhost:3001/checklist/${id}`)
         } catch (err) {
             console.log(err)
         } finally {
-            setChks(...data.data)
+            setChks(data.data)
             setLoaded(true)
         }
     }
 
-    const handleCheckboxChange =(ev, postId)=> {
+    const handleCheckboxChange = async (ev, postId)=> {
         const name = ev.target.name;
         const toggleDone = ev.target.checked? 1 : 0 ;
-
         
         const newValue = {[ev.target.name]: toggleDone} 
         const patchValue = {...chks, ...newValue}
 
+        console.log(chks);
         console.log(patchValue);
 
-        axios.patch('http://localhost:3001/checklist', patchValue)
+        //`http://localhost:3001/checklist?postId=${postId}`
+        await axios.patch(`http://localhost:3001/checklist/${id}`, patchValue, {
+            headers: { 
+                'Content-Type': 'application/json' 
+            }
+        })
+        setLoaded(false)
     }
 
     return (
