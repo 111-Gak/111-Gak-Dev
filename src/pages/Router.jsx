@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 
 import NotFound from "./NotFound";
+import Main from "./Main";
+import Detail from "./Detail";
 import WritePage from "./WritePage";
 import CommunityPage from "./CommunityPage";
 import Header from "../components/Header";
@@ -14,8 +16,10 @@ export default function Router(){
 
             <Contents>
                 <Routes>
-                    <Route path="/write" element={<WritePage />} />
+                    <Route path="/" element={<Main />} />
                     <Route path="/community" element={<CommunityPage />} />
+                    <Route path="/write" element={<WritePage />} />
+                    <Route path="/detail" element={<Detail />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
             </Contents>
