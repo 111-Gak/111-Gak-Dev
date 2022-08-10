@@ -1,12 +1,15 @@
-import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import axios from "axios";
+import styled from "styled-components";
 
 import ProgressBar from "./ProgressBar";
 import { useDispatch } from "react-redux";
 import { patchChecklistThunk } from "../store/modules/checklist";
 
 export default function Post(props) {
+    const navigate = useNavigate();
+
     const {postId, username, createdAt, title, done}=props.list;
     const [chks, setChks] = useState([]);
     const [patched, setPatched] = useState(true);
@@ -57,7 +60,10 @@ export default function Post(props) {
     
 
     return(
-        <MyPost>
+        <MyPost  
+        onClick={()=> {
+            navigate('/post/'+postId)}
+        }>
             <div className="post-header">
                 <div>
                     <span className="post-name">
