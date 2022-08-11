@@ -4,7 +4,7 @@ import axios from "axios";
 
 import Post from "../components/Post";
 import styled from "styled-components";
-
+import Comment from "./Comment";
 export default function DetailPage (){
     const postId = useParams('postId').postId;
     console.log(postId);
@@ -21,9 +21,13 @@ export default function DetailPage (){
     }, []);
 
     return (
+        <>
         <Detail>
             <Post list={{...post}} key={post.postId} />
         </Detail>
+        <Comment />
+        </>
+        
     );
 };
 

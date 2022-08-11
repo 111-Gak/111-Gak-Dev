@@ -9,6 +9,7 @@ const zeroDate = (date<10)?'0'+parseInt(date):date;
 const initialDate = `${today.getFullYear()}-${zeroMonth}-${zeroDate}`
 const initialState = {
     comment: {
+        postId: "",
         commentUsername: "",
         commentText: "",
         commentCreatedAt: initialDate
@@ -21,8 +22,10 @@ export const commentsSlice = createSlice({
     reducers: {
         editComment: (state, action) => {
             const {name:keyword, currentValue} = action.payload;
-
-            console.log('코멘트수정');
+            const newState={...state.comment, [keyword]: currentValue};
+            state.comment = newState;
+            console.log(action.payload, newState);
+            console.log('코멘트추가');
         }
     }
 })
