@@ -25,14 +25,13 @@ export const checklistSlice = createSlice({
     initialState: { list: [{ id: '3423423423t6sd', chkchk: 0 }] },
     reducers: {
         editChecklist: (state, action) => {
-            const {idx: idx, currentValue} = action.payload;
-            const newState={...state.checklist, "chkText": currentValue, idx: idx};
+            const {currentValue, name} = action.payload;
+            const currText = name + "Text"
+            const newState = {...state.checklist, [name]: 0, [currText]: currentValue};
             
-            // console.log(newState);
+            console.log(newState);
 
             state.checklist = newState;
-        },
-        patchChecklist: (state, action) => {
         }
     },
     extraReducers: (builder) => {
