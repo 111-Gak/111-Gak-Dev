@@ -6,7 +6,7 @@
       "username": "이름1",
       "createdAt": "2022-01-01",
       "title": "TIL제목1 json",
-      "done": 1
+      "done": 0
     },
     {
       "id": 1,
@@ -29,7 +29,7 @@
     {
       "id": 0,
       "postId": "6f-s9ewv0n",
-      "chk1": 1,
+      "chk1": 0,
       "chk1Text": "할 일1",
       "chk2": 1,
       "chk2Text": "할 일2",
