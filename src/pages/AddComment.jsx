@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import Axios from "axios";
-
 import styled from "styled-components";
-
 
 
 export default function AddComment (){
@@ -11,25 +9,24 @@ export default function AddComment (){
     const [comment, setComment] = useState(null);
     const [loaded, setLoaded] = useState(false);
 
-    const [targetId, setTargetId] = useState(null);
-    const [editComment, setEditComment] = useState({
-    title: "",
-  });
+    // const [targetId, setTargetId] = useState(null);
+    // const [editComment, setEditComment] = useState({
+    // title: "",
+//   });
     
     const onClickDeleteButtonHandler = (postId) => {
         Axios.delete(`http://localhost:3001/comments/${postId}`);
-      };
+    };
 
-      const onClickEditButtonHandler = (postId, edit) => {
-        Axios.patch(`http://localhost:3001/comments/${postId}`, edit);
-      };
+    // const onClickEditButtonHandler = (postId, edit) => {
+    //     Axios.patch(`http://localhost:3001/comments/${postId}`, edit);
+    // };
 
     const fetchPosts = async () => {
         let data; 
         console.log(postId)
         try {
             data = await Axios.get("http://localhost:3001/comments?postId="+postId)
-            // data = await axios.get("http://localhost:3001/comments?postId=tMwTvqPQ76")
         } catch (err) {
             console.log(err)
         } finally {
@@ -40,7 +37,7 @@ export default function AddComment (){
     }
     useEffect(()=>{
         fetchPosts()
-    }, [loaded])
+    }, [])
     
     // console.log(comment)
     
@@ -55,7 +52,8 @@ export default function AddComment (){
                 <div><ContentStyle>댓글내용:{comment.commentText}</ContentStyle></div>
                 <div>
                     <button type="button" onClick={() => onClickDeleteButtonHandler(comment.id)}>❌</button>
-                    <input
+                    {/* <button type="button">❌</button> */}
+                    {/* <input
             type="text"
             placeholder="입력"
             onChange={(ev) => {
@@ -71,8 +69,9 @@ export default function AddComment (){
                 title: ev.target.value,
               });
             }}
-          />
-                    <button type="button" onClick={() => onClickEditButtonHandler(postId, editComment)}>✍🏼'</button>
+          /> */}
+                    {/* <button type="button" onClick={() => onClickEditButtonHandler(postId, editComment)}>✍🏼'</button> */}
+                    {/* <button type="button">✍🏼'</button> */}
                 </div>
             </CommentStyle>
 

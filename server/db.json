@@ -53,7 +53,7 @@
       "chk2Text": "할 일2"
     }
   ],
-  "comment": [
+  "comments": [
     {
       "id": 0,
       "postId": "oe05j32-3m",
@@ -97,6 +97,83 @@
       "commentText": "안녕",
       "commentCreatedAt": "2022-08-11",
       "id": 3
+    },
+    {
+      "postId": "oe05j32-3m",
+      "commentUsername": "sdf",
+      "commentText": "sdf",
+      "commentCreatedAt": "2022-08-11",
+      "id": 4
+    },
+    {
+      "postId": "oe05j32-3m",
+      "commentUsername": "sdfsdf",
+      "commentText": "sdfsdf",
+      "commentCreatedAt": "2022-08-11",
+      "id": 5
+    },
+    {
+      "postId": "oe05j32-3m",
+      "commentUsername": "sdf",
+      "commentText": "sdfsdfsdfsdfsdf",
+      "commentCreatedAt": "2022-08-11",
+      "id": 6
+    },
+    {
+      "postId": "oe05j32-3m",
+      "commentUsername": "sdf",
+      "commentText": "sdfsdfsdfsdfsdf",
+      "commentCreatedAt": "2022-08-11",
+      "id": 7
+    },
+    {
+      "postId": "oe05j32-3m",
+      "commentUsername": "sdf",
+      "commentText": "sdfsdfsdfsdfsdf",
+      "commentCreatedAt": "2022-08-11",
+      "id": 8
+    },
+    {
+      "postId": "oj5C0BFStoIyfmVufUudm",
+      "commentUsername": "sdf",
+      "commentText": "sdfsdfsdf",
+      "commentCreatedAt": "2022-08-11",
+      "id": 9
+    },
+    {
+      "postId": "LmidM-itSiZesJa39oQ06",
+      "commentUsername": "김철수",
+      "commentText": "한번만",
+      "commentCreatedAt": "2022-08-11",
+      "id": 10
+    },
+    {
+      "postId": "TSPhIVpnd8QH6HOHvmAuc",
+      "commentUsername": "ㄴㅇㄹ",
+      "commentText": "ㄴㅇㄹ",
+      "commentCreatedAt": "2022-08-11",
+      "id": 11
+    },
+    {
+      "postId": "sG1nWD1M90qhP2hLehUwA",
+      "commentUsername": "ㅇㄹ",
+      "commentText": "ㄴㅇㄹ",
+      "commentCreatedAt": "2022-08-11",
+      "id": 12
+    },
+    {
+      "postId": "oe05j32-3m",
+      "commentUsername": "철수",
+      "commentText": "야",
+      "commentCreatedAt": "2022-08-11",
+      "id": 13
+    },
+    {
+      "postId": "oe05j32-3m",
+      "commentUsername": "ㄴㅇㄹ",
+      "commentText": "ㅁㄴㅇㄹ",
+      "commentCreatedAt": "2022-08-11",
+      "id": 14
     }
   ]
 }

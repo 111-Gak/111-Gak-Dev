@@ -25,7 +25,6 @@ export const commentsSlice = createSlice({
             const newState={...state.comment, [keyword]: currentValue};
             state.comment = newState;
             console.log(action.payload, newState);
-            console.log('코멘트추가');
         }
     }
 })
