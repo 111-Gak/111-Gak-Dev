@@ -1,30 +1,8 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function CheckBox(props){
-    const {postId, id}=props;
-
-    console.log(id);
-
-    const [chks, setChks] = useState();
-    const [loaded, setLoaded] = useState(false);
+    const {chks, postId, id, setLoaded}=props;
     
-    useEffect(()=>{
-        fetchChks()
-    }, [loaded])
-
-    const fetchChks = async () => {
-        let data;
-        try {
-            data = await axios.get(`http://localhost:3001/checklist/${id}`)
-        } catch (err) {
-            console.log(err)
-        } finally {
-            setChks(data.data)
-            setLoaded(true)
-        }
-    }
-
     const handleCheckboxChange = async (ev, postId)=> {
         const name = ev.target.name;
         const toggleDone = ev.target.checked? 1 : 0 ;
@@ -32,10 +10,6 @@ export default function CheckBox(props){
         const newValue = {[ev.target.name]: toggleDone} 
         const patchValue = {...chks, ...newValue}
 
-        console.log(chks);
-        console.log(patchValue);
-
-        //`http://localhost:3001/checklist?postId=${postId}`
         await axios.patch(`http://localhost:3001/checklist/${id}`, patchValue, {
             headers: { 
                 'Content-Type': 'application/json' 
@@ -45,61 +19,57 @@ export default function CheckBox(props){
     }
 
     return (
-    <>  
-        {loaded && chks!=undefined && <>
+    <>
+        <div>
+            <input 
+                type="checkbox" 
+                name={'chk1'}
+                id={'chk1'}
+                checked={chks.chk1 ? 'checked' : false}
+                onChange={(ev)=> {
+                    ev.preventDefault();
+                    handleCheckboxChange(ev, postId);
+                }}
+                />
+            <label htmlFor={'chk1'} >
+                {chks.chk1Text}
+            </label>
+        </div>
 
-            <div>
-                <input 
-                    type="checkbox" 
-                    name={'chk1'}
-                    id={'chk1'}
-                    checked={chks.chk1 ? 'checked' : false}
-                    onChange={(ev)=> {
-                        ev.preventDefault();
-                        handleCheckboxChange(ev, postId);
-                    }}
-                    />
-                <label htmlFor={'chk1'} >
-                    {chks.chk1Text}
-                </label>
-            </div>
-
-            {chks.chk2Text && <div>
-                <input 
-                    type="checkbox" 
-                    name={'chk2'}
-                    id={'chk2'}
-                    checked={chks.chk2 ? 'checked' : false}
-                    onChange={(ev)=> {
-                        ev.preventDefault();
-                        handleCheckboxChange(ev, postId);
-                    }}
-                    />
-                <label htmlFor={'chk2'} >
-                    {chks.chk2Text}
-                </label>
-            </div>
-            }
-
-            {chks.chk3Text && <div>
-                <input 
-                    type="checkbox" 
-                    name={'chk3'}
-                    id={'chk3'}
-                    checked={chks.chk3 ? 'checked' : false}
-                    onChange={(ev)=> {
-                        ev.preventDefault();
-                        handleCheckboxChange(ev, postId);
-                    }}
-                    />
-                <label htmlFor={'chk3'} >
-                    {chks.chk3Text}
-                </label>
-            </div>
-            }
-
-        </>
+        {chks.chk2Text && <div>
+            <input 
+                type="checkbox" 
+                name={'chk2'}
+                id={'chk2'}
+                checked={chks.chk2 ? 'checked' : false}
+                onChange={(ev)=> {
+                    ev.preventDefault();
+                    handleCheckboxChange(ev, postId);
+                }}
+                />
+            <label htmlFor={'chk2'} >
+                {chks.chk2Text}
+            </label>
+        </div>
         }
+
+        {chks.chk3Text && <div>
+            <input 
+                type="checkbox" 
+                name={'chk3'}
+                id={'chk3'}
+                checked={chks.chk3 ? 'checked' : false}
+                onChange={(ev)=> {
+                    ev.preventDefault();
+                    handleCheckboxChange(ev, postId);
+                }}
+                />
+            <label htmlFor={'chk3'} >
+                {chks.chk3Text}
+            </label>
+        </div>
+        }
+
     </>
     )
 }
