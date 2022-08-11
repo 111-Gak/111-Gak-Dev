@@ -4,6 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 import Button from "../components/Button";
@@ -17,21 +18,27 @@ export default function EditPage () {
     const inputValue = useSelector(state => state.posts.post);
     const postId = useParams('postId').postId;
     // console.log(postId);
+    const navigate = useNavigate();
 
 
     const onSubmitHandler = (e) => {
         e.preventDefault(); //onSubmitHandler가 실행될 때 새로고침방지
-        const newEditValue = {...editValue, ...inputValue, postId: postId}; //editValue가 불러온, 이미 입력되었던,수정해야할 값
+        const newEditValue = {...editValue, ...inputValue, postId: postId}; //editValue:불러온, 이미 입력되었던,수정해야할 값
         axios.patch(`http://localhost:3001/posts/${editValue.id}`, newEditValue);
         // console.log({...editValue, ...inputValue, postId: postId})
-    }
+        navigate(`/post/${postId}`);
+    };
+
+
+
+
 
     const getPost = async() => {
         await axios.get("http://localhost:3001/posts?postId="+postId)
         .then(res => {
             setEditValue(...res.data) //data.data처럼 결과값 안에 data를 봐야합니다
             // console.log(...res.data)
-            setLoaded(true)
+            setLoaded(true) //기능충돌방지 ( 게시물을 읽어오기 전에 로드방지)
         }) 
         ;
         // console.log("http://localhost:3001/posts?postId="+postId)
@@ -41,6 +48,8 @@ export default function EditPage () {
         getPost();
         // console.log(editValue);
     },[loaded])
+
+
 
     return (
 
