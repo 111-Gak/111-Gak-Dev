@@ -68,8 +68,7 @@ const Layout = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 20px;
-`
-;
+`;
 
 const CenterPost = styled.div`
     background-color: yellow;
