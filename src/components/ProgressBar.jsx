@@ -41,6 +41,12 @@ const MyProgressBar = styled.div`
     background-image: linear-gradient(to left, #1ac51a, #83d744);
     
     position: relative;
+    animation: scaleX 0.3s;
+    transform-origin: left;
+
+    @keyframes scaleX {
+        0% { transform: scaleX(90%) }
+    }
 
     .percent {
         display: inline-block;
