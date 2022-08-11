@@ -25,10 +25,33 @@ export default function Post(props) {
             console.log(err)
         } finally {
             setChks(data.data)
+            chkDone(data.data)
             setLoaded(true)
         }
     }
+    const chkDone = (list) => {
+        let count = 0;
+        for (const x in list){
+            if(list[x] === 1 && x !== "id") count++;
+        }
+        if( count === 3 && done !== 1){
+            updatePostDone(id, 1)
+        } else if( count < 3 && done === 1 ){
+            updatePostDone(id, 0)
+        }
+    }
 
+    const updatePostDone = async (doneId, newDone) => {
+        try {
+            await axios.patch(`http://localhost:3001/posts/${doneId}`, {id: doneId, done: newDone})
+        } catch (err) {
+            console.log(err)
+        } finally {
+            console.log('hi');
+            await navigate('/posts')
+        }
+    }
+    
     return (
     <>
         {loaded && <MyPost>
