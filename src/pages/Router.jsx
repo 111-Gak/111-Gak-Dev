@@ -21,7 +21,7 @@ export default function Router(){
                     <Route path="/write" element={<WritePage />} />
                     <Route path="/posts" element={<CommunityPage />} />
                     <Route path="/post/:postId" element={<DetailPage />} />
-                    <Route path="/edit" element={<EditPage />} />
+                    <Route path="/post/:postId/edit" element={<EditPage />} />
                     
                 </Routes>
             </Contents>
