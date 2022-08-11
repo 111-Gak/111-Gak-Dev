@@ -3,20 +3,26 @@ import { useParams } from "react-router-dom"
 import Axios from "axios";
 
 import styled from "styled-components";
-import Button from "../components/Button"
 
 
 
 export default function AddComment (){
     const { postId }= useParams();
-    // console.log(postId)
     const [comment, setComment] = useState(null);
     const [loaded, setLoaded] = useState(false);
+
+    const [targetId, setTargetId] = useState(null);
+    const [editComment, setEditComment] = useState({
+    title: "",
+  });
     
     const onClickDeleteButtonHandler = (postId) => {
         Axios.delete(`http://localhost:3001/comments/${postId}`);
       };
-      
+
+      const onClickEditButtonHandler = (postId, edit) => {
+        Axios.patch(`http://localhost:3001/comments/${postId}`, edit);
+      };
 
     const fetchPosts = async () => {
         let data; 
@@ -44,17 +50,29 @@ export default function AddComment (){
         <Addcomment>
         {loaded && comment.map(comment => {
             return (
-            // <div >
-            // sdfsdfsdfsdfs
-            // list={{...comment}} 
-            // key={comment.postId}
-            // </div>
             <CommentStyle key={comment.postId}>
                 <div><UserStyle>작성자:{comment.commentUsername}</UserStyle></div>
                 <div><ContentStyle>댓글내용:{comment.commentText}</ContentStyle></div>
                 <div>
-                    <button onClick={(postId) => onClickDeleteButtonHandler(comment.id)}>❌</button>
-                    <Button buttonText={'✍🏼'}/>
+                    <button type="button" onClick={() => onClickDeleteButtonHandler(comment.id)}>❌</button>
+                    <input
+            type="text"
+            placeholder="입력"
+            onChange={(ev) => {
+              setTargetId(ev.target.value);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="댓글수정"
+            onChange={(ev) => {
+              setEditComment({
+                ...editComment,
+                title: ev.target.value,
+              });
+            }}
+          />
+                    <button type="button" onClick={() => onClickEditButtonHandler(postId, editComment)}>✍🏼'</button>
                 </div>
             </CommentStyle>
 

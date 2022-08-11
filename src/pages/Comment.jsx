@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 import AddComment from "./AddComment"
 import { useParams } from "react-router-dom"
-
 import styled from "styled-components";
 import Button from "../components/Button";
 import TextInputBox from "../components/TextInputBox";
@@ -12,11 +11,10 @@ import TextInputBox from "../components/TextInputBox";
 const Comment = () => {
     const { postId }= useParams();
 
-   
     // const navigate = useNavigate();
     const comment = useSelector(state => state.comments.comment);
-    const onSubmitHandler = (e) => {
-    e.preventDefault();
+    const onSubmitHandler = (ev) => {
+    ev.preventDefault();
     
 
     const newComment = {...comment, postId: postId};
@@ -27,9 +25,9 @@ const Comment = () => {
     };
 
     return (
-        <CommentLayout onSubmit={(e) =>{
-            e.preventDefault();
-            onSubmitHandler(e)}}
+        <CommentLayout onSubmit={(ev) =>{
+            ev.preventDefault();
+            onSubmitHandler(ev)}}
             >
             <InputGroupStyle>
             <TextInputBox 
