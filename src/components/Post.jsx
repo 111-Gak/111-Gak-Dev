@@ -1,16 +1,37 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
-import styled from "styled-components";
+import axios from "axios";
 
+import styled from "styled-components";
 import ProgressBar from "./ProgressBar";
 import CheckBox from "./CheckBox";
 
 export default function Post(props) {
     const navigate = useNavigate();
     const {id, postId, username, createdAt, title, done} = props.list;
+    
+    const [chks, setChks] = useState();
+    const [loaded, setLoaded] = useState(false);
+    
+    useEffect(()=>{
+        fetchChks()
+    }, [loaded])
+
+    const fetchChks = async () => {
+        let data;
+        try {
+            data = await axios.get(`http://localhost:3001/checklist/${id}`)
+        } catch (err) {
+            console.log(err)
+        } finally {
+            setChks(data.data)
+            setLoaded(true)
+        }
+    }
 
     return (
     <>
-        {<MyPost>
+        {loaded && <MyPost>
             <div className="post-header"  
             onClick = {()=> {
                 navigate('/post/'+postId)}
@@ -29,10 +50,10 @@ export default function Post(props) {
                 </span>
             </div>
             <div className="post-body">
-                <ProgressBar postId={postId} />
+                <ProgressBar chks={chks} postId={postId} />
 
                 <div>
-                    <CheckBox postId={postId} id={id}/>
+                    <CheckBox chks={chks} postId={postId} id={id} setLoaded={setLoaded}/>
                 </div>
 
             </div>

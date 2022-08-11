@@ -37,6 +37,7 @@ const Detail = styled.div`
         width: 100%;
         flex: 1 1 auto;
         text-align: center;
+        padding-top: 15px;
     }
     .post-title {
         margin: 10px 0 20px;

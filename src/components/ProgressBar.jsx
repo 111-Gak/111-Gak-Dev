@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 import styled from "styled-components";
 
 export default function ProgressBar(props){
-    const {postId} = props
-    const [chks, setChks] = useState();
+    const {postId, chks} = props
     const [counts, setCounts] = useState(0);
-    const [loaded, setLoaded] = useState(false);
     
     useEffect(()=>{
-
-        fetchChks();
         renderCount();
-
-    }, [loaded])
+    }, [])
 
     const renderCount = () => {
         setCounts(0)  
@@ -26,26 +20,13 @@ export default function ProgressBar(props){
         }
     }
 
-    const fetchChks = async () => {
-        let data;
-        try {
-            data = await axios.get(`http://localhost:3001/checklist?postId=${postId}`)
-        } catch (err) {
-            console.log(err)
-        } finally {
-            setChks(...data.data)
-            setLoaded(true)
-        }
-    }
-
-
     return (
         <>
-            {loaded && <MyProgressBar counts={counts}>
+            <MyProgressBar counts={counts}>
                 <div className="percent">
                     {counts * 33}%
                 </div>    
-            </MyProgressBar>}
+            </MyProgressBar>
         </>
     )
 }

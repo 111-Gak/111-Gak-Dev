@@ -39,7 +39,7 @@
     {
       "id": 1,
       "postId": "93fmelspc2",
-      "chk1": 0,
+      "chk1": 1,
       "chk1Text": "할 일1",
       "chk2": 0,
       "chk2Text": "할 일2"
@@ -47,9 +47,9 @@
     {
       "id": 2,
       "postId": "oe05j32-3m",
-      "chk1": 0,
+      "chk1": 1,
       "chk1Text": "할 일1",
-      "chk2": 0,
+      "chk2": 1,
       "chk2Text": "할 일2"
     }
   ],
