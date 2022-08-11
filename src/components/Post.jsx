@@ -1,21 +1,18 @@
-
 import { useNavigate } from 'react-router-dom'
 import styled from "styled-components";
 
 import ProgressBar from "./ProgressBar";
-import { useDispatch } from "react-redux";
 import CheckBox from "./CheckBox";
 
 export default function Post(props) {
-    const dispatch = useDispatch()
     const navigate = useNavigate();
-    const {id, postId, username, createdAt, title, done}=props.list;
+    const {id, postId, username, createdAt, title, done} = props.list;
 
     return (
     <>
         {<MyPost>
             <div className="post-header"  
-            onClick={()=> {
+            onClick = {()=> {
                 navigate('/post/'+postId)}
             }>
                 <div>
@@ -32,7 +29,7 @@ export default function Post(props) {
                 </span>
             </div>
             <div className="post-body">
-                {/* <ProgressBar postId={postId} /> */}
+                <ProgressBar postId={postId} />
 
                 <div>
                     <CheckBox postId={postId} id={id}/>

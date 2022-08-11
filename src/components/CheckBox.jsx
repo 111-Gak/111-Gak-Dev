@@ -4,8 +4,6 @@ import axios from "axios";
 export default function CheckBox(props){
     const {postId, id}=props;
 
-    console.log(id);
-
     const [chks, setChks] = useState();
     const [loaded, setLoaded] = useState(false);
     
@@ -32,10 +30,6 @@ export default function CheckBox(props){
         const newValue = {[ev.target.name]: toggleDone} 
         const patchValue = {...chks, ...newValue}
 
-        console.log(chks);
-        console.log(patchValue);
-
-        //`http://localhost:3001/checklist?postId=${postId}`
         await axios.patch(`http://localhost:3001/checklist/${id}`, patchValue, {
             headers: { 
                 'Content-Type': 'application/json' 
