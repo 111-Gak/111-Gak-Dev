@@ -11,9 +11,9 @@
     {
       "id": 1,
       "postId": "93fmelspc2",
-      "username": "이름2",
-      "createdAt": "2022-02-02",
-      "title": "TIL제목2",
+      "username": "1111",
+      "createdAt": "2022-08-11",
+      "title": "2222",
       "done": 0
     },
     {
@@ -41,7 +41,7 @@
       "postId": "93fmelspc2",
       "chk1": 1,
       "chk1Text": "할 일1",
-      "chk2": 0,
+      "chk2": 1,
       "chk2Text": "할 일2"
     },
     {
