@@ -1,46 +1,22 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     checklist: {
         chk1Text: ""
     }
 }
-export const patchChecklistThunk = createAsyncThunk(
-    "patch",
-    async (payload, api) => {
-        console.log(payload, api);
-        try {
-            const data = await axios.patch("http://localhost:3001/checklist?postId=6f-s9ewv0n", payload)
-            return data
-            // return api.fulfillWithValue(data.data)
-        } catch(err) {
-            return api.rejectWithValue(err)
-        }
-    } 
-)
 
 export const checklistSlice = createSlice({
     name: "checklists",
-    initialState: { list: [{ id: '3423423423t6sd', chkchk: 0 }] },
+    initialState,
     reducers: {
         editChecklist: (state, action) => {
             const {currentValue, name} = action.payload;
             const currText = name + "Text"
             const newState = {...state.checklist, [name]: 0, [currText]: currentValue};
-            
-            console.log(newState);
 
             state.checklist = newState;
         }
-    },
-    extraReducers: (builder) => {
-        builder.addCase(patchChecklistThunk.fulfilled, (state, action) => {
-            const newList = state.list.map((el) => {
-                return el.id === action.payload.id ? action.payload : el;
-            })
-            state.list = newList;
-        })
     }
 })
 
