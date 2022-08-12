@@ -6,12 +6,12 @@ import { editChecklist } from "../store/modules/checklist"
 
 export default function TextInputBox(props){
     const dispatch = useDispatch();
-    const {name, placeholder, max=null, min=null, required=null, action=null} = props;
+    const {name, placeholder=null, max=null, min=null, required=null, action=null , value="", title=null} = props;
 
     return (
         <InputBox>
             <label htmlFor={name}>
-                {placeholder}
+                {title}
                 {required?"*":""}
             </label>
             <input 
@@ -19,6 +19,7 @@ export default function TextInputBox(props){
             name={name}
             type="text"
             placeholder={`${placeholder}`}
+            value={value}
             autoComplete="off"
             maxLength={max}
             minLength={min}
